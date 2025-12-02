@@ -12,13 +12,15 @@ const router = Router();
 // });
 
 const {newUsuario, loginUsuario, renewUsuario} = require('../controllers/auth');
+const { validarCampos } = require('../middleware/validators');
 
 router.post(
     '/new',
     [ 
-        check('name', 'El nombre es obligatorio').not().isEmpty(),
+        check('name', 'El nombre es obligatorio').not().isEmpty().isLength({min: 3}),
         check('email', 'El email es obligatorio').isEmail(),
-        check('password', 'El password debe de tener 6 caracteres').isLength({min: 6})
+        check('password', 'El password debe de tener 6 caracteres').isLength({min: 6}),
+        validarCampos
     ], 
     newUsuario
  );
@@ -27,7 +29,8 @@ router.post(
     '/',
     [
         check('email', 'El email es obligatorio').isEmail(),
-        check('password', 'El password debe de tener 6 caracteres').isLength({min: 6})
+        check('password', 'El password debe de tener 6 caracteres').isLength({min: 6}),
+        validarCampos
     ],    
     loginUsuario
 ); 
