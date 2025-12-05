@@ -99,8 +99,7 @@ const renewUsuario = (req, res = response) => {
     res.status(201).json({
         ok: true,
         msg: 'renew',
-        email,
-        password
+        
     })
 }
 

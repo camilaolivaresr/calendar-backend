@@ -4,15 +4,11 @@ const {Router} = require('express');
 const {check} = require('express-validator')
 const router = Router();
 
-// router.get('/', (req, res) => {
-//     console.log('se requiere /')
-//     res.json({
-//         ok: true
-//     })
-// });
-
 const {newUsuario, loginUsuario, renewUsuario} = require('../controllers/auth');
 const { validarCampos } = require('../middleware/validators');
+const { validatorJWT } = require('../middleware/validar-jwt');
+
+
 
 router.post(
     '/new',
@@ -35,13 +31,7 @@ router.post(
     loginUsuario
 ); 
 
-router.get(
-    '/renew',
-    [
-
-    ],
-    renewUsuario 
-); 
+router.get('/renew',validatorJWT, renewUsuario ); 
 
 
 module.exports = router;
