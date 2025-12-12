@@ -1,13 +1,17 @@
-const {router} = require('express');
+const {Router} = require('express');
 const {validatorJWT} = require('../middleware/validar-jwt')
-const {getEvents,createEvents,updateEvents,deleteEvents} = require('../controllers/events')
+const {getEvent,createEvent,updateEvent,deleteEvent} = require('../controllers/events')
 
-router.get('/',validatorJWT, getEvents);
+const router = Router();
+//todas las rutas estan protejidas  por el JWT
+router.use(validatorJWT);
 
-router.post('/',validatorJWT ,createEvents);
+router.get('/', getEvent);
 
-router.put('/:id',validatorJWT ,updateEvents);
+router.post('/' ,createEvent);
 
-router.delete('/',validatorJWT ,deleteEvents);
+router.put('/:id' ,updateEvent);
+
+router.delete('/:id' ,deleteEvent);
 
 module.exports = router;

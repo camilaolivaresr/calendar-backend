@@ -1,7 +1,7 @@
 const { response } = require('express')
 
 
-const getEvents = (req, res = response) => {
+const getEvent = (req, res = response) => {
 
 
     res.json({
@@ -10,8 +10,8 @@ const getEvents = (req, res = response) => {
     })
 }
 
-const createEvents = (req, res = response) => {
-
+const createEvent = (req, res = response) => {
+    console.log(req.body);
 
     res.json({
         ok: true,
@@ -20,7 +20,7 @@ const createEvents = (req, res = response) => {
 }
 
 
-const updateEvents = (req, res = response) => {
+const updateEvent = (req, res = response) => {
 
 
     res.json({
@@ -30,7 +30,7 @@ const updateEvents = (req, res = response) => {
 }
 
 
-const deleteEvents = (req, res = response) => {
+const deleteEvent = (req, res = response) => {
 
 
     res.json({
@@ -40,8 +40,8 @@ const deleteEvents = (req, res = response) => {
 }
 
 module.exports = {
-    getEvents,
-    createEvents,
-    updateEvents,
-    deleteEvents
+    getEvent,
+    createEvent,
+    updateEvent,
+    deleteEvent
 }
