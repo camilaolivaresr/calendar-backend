@@ -2,12 +2,14 @@ const { response } = require('express');
 const Evento = require('../models/Event')
 
 
-const getEvent = (req, res = response) => {
+const getEvent = async(req, res = response) => {
 
+    const events = await Evento.find()
+                               .populate('user', 'name')
 
     res.json({
         ok: true,
-        msg: 'obtener eventos'
+       events
     })
 }
 
