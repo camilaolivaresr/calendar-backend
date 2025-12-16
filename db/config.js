@@ -5,7 +5,7 @@ const dbConnection = async() => {
        await mongoose.connect( process.env.DB_CNN);
         
     } catch (error) {
-        throw new Error('Error a la hora de inicializar DB');
+        throw new Error('Error a la hora de inicializar DB'+ error.message);
         
     }
 }
