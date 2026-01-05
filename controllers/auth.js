@@ -95,16 +95,15 @@ const loginUsuario = async (req, res = response) => {
 };
 
 const renewUsuario = async(req, res = response) => {
-    // const uid = req.uid;
-    // const name = req.name;
+  
     const {uid , name} = req;
 
-    const token = await generarJWT(uid, name)
+    const token = await generarJWT(uid, name);
 
-    res.status(201).json({
+    res.json({
         ok: true,
-        // uid,
-        // name, 
+        uid,
+        name, 
         token
 
     })
