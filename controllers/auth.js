@@ -60,6 +60,7 @@ const loginUsuario = async (req, res = response) => {
                 msg: 'User no existe con esa convinacion :)'
             });
         }
+
         const validPassword = bcrypt.compareSync(password, usuario.password);
 
         if (!validPassword) {
@@ -75,7 +76,7 @@ const loginUsuario = async (req, res = response) => {
         res.json({
             ok: true,
             uid: usuario.id,
-            name: User.name,
+            name: usuario.name,
             token
         })
 
@@ -85,13 +86,6 @@ const loginUsuario = async (req, res = response) => {
             msg: 'Escriba al Admin'
         })
     }
-
-    res.status(201).json({
-        ok: true,
-        msg: 'login',
-        email,
-        password
-    })
 };
 
 const renewUsuario = async(req, res = response) => {
